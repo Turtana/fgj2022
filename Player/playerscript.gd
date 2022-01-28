@@ -17,7 +17,14 @@ func _ready():
 func _process(delta):
 	var input = get_movement_input()
 	move_and_slide(input * move_speed)
+	
+	if Input.is_action_just_pressed("action"):
+		$RayCast.rotation = $Camera.rotation
+		var coll = $RayCast.get_collider()
+		if coll:
+			print(coll.name)
 
+# movement controls
 func get_movement_input():
 	var input_dir = Vector3()
 
@@ -34,6 +41,7 @@ func get_movement_input():
 	input_dir = input_dir.normalized()
 	return input_dir
 
+# camera controls
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		$Camera.rotate_x(-event.relative.y * mouse_sensitivity)
