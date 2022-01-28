@@ -7,6 +7,7 @@ extends KinematicBody
 var mouse_sensitivity = .001
 var camera_anglev = 0
 var move_speed = 5
+var pause = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +24,15 @@ func _process(delta):
 		var coll = $RayCast.get_collider()
 		if coll:
 			print(coll.name)
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		if pause:
+			pause = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			pause = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
 
 # movement controls
 func get_movement_input():
@@ -43,6 +53,8 @@ func get_movement_input():
 
 # camera controls
 func _unhandled_input(event):
+	if pause:
+		return
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		$Camera.rotate_x(-event.relative.y * mouse_sensitivity)
 		rotate_y(-event.relative.x * mouse_sensitivity)
