@@ -23,10 +23,8 @@ func _process(delta):
 func swap_day_night():
 	day = not day
 	if (day):
-		print("day")
 		$WorldEnvironment.environment = day_env
 		$Sun.texture = sun
 	else:
-		print("night")
 		$WorldEnvironment.environment = night_env
 		$Sun.texture = moon
