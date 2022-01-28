@@ -20,7 +20,6 @@ func _process(delta):
 
 func get_movement_input():
 	var input_dir = Vector3()
-	# desired move in camera direction
 
 	if Input.is_action_pressed("move_forward"):
 		input_dir += -$Camera.global_transform.basis.z
