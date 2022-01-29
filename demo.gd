@@ -19,6 +19,10 @@ func _ready():
 	Global.population = Global.villagers.size()
 	$Player.update_score()
 	sun_offset = $Sun.translation - $Player.translation
+	
+	randomize()
+	var cycletime = randi() % 61 + 60
+	$DayCycle.start(cycletime)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -63,8 +67,7 @@ func _on_Dusk_finished():
 	$Music/NightMusic.play()
 	$Music/NightMusic.stream_paused = false
 	$Light.light_energy = 1
-	$Player/CanvasLayer/SunHealth.visible = false
-	$Player/CanvasLayer/Health.visible = true
+	$Player.set_hands(false)
 	swap_villager_sprites()
 
 func _on_Dawn_finished():
@@ -74,6 +77,11 @@ func _on_Dawn_finished():
 	$Music/DayMusic.play()
 	$Music/DayMusic.stream_paused = false
 	$Light.light_energy = 2
-	$Player/CanvasLayer/SunHealth.visible = true
-	$Player/CanvasLayer/Health.visible = false
+	$Player.set_hands(true)
 	swap_villager_sprites()
+
+
+func _on_DayCycle_timeout():
+	swap_day_night()
+	var cycletime = randi() % 61 + 60
+	$DayCycle.start(cycletime)

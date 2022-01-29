@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/playerscript.gd" type="Script" id=1]
 [ext_resource path="res://Villager/villagerPNG.png" type="Texture" id=2]
 [ext_resource path="res://Environment/font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Sounds/WherewolfWolfHit02.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/WherewolfVillagerSaveJingle02.wav" type="AudioStream" id=5]
+[ext_resource path="res://Player/ihmisPOVpng.png" type="Texture" id=6]
+[ext_resource path="res://Player/susiPOVpng.png" type="Texture" id=7]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -128,6 +130,31 @@ margin_right = 380.0
 margin_bottom = -5.0
 custom_fonts/font = ExtResource( 3 )
 text = "Health"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HandsHuman" type="TextureRect" parent="CanvasLayer"]
+margin_left = -7.0
+margin_top = 157.0
+margin_right = 1513.0
+margin_bottom = 1172.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HandsWolf" type="TextureRect" parent="CanvasLayer"]
+visible = false
+margin_left = -7.0
+margin_top = 80.0
+margin_right = 1513.0
+margin_bottom = 1095.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

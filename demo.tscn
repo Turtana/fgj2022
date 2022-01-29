@@ -9,8 +9,8 @@
 [ext_resource path="res://Environment/sun.png" type="Texture" id=7]
 [ext_resource path="res://Music/Wherewolfnight30s.wav" type="AudioStream" id=8]
 [ext_resource path="res://Music/Wherewolfday30s.wav" type="AudioStream" id=9]
-[ext_resource path="res://Music/WherewolfEvilPianoRoll.wav" type="AudioStream" id=10]
-[ext_resource path="res://Music/WherewolfHappyPianoRoll.wav" type="AudioStream" id=11]
+[ext_resource path="res://Music/WherewolfEvilPianoRoll02.wav" type="AudioStream" id=10]
+[ext_resource path="res://Music/WherewolfHappyPianoRoll02.wav" type="AudioStream" id=11]
 [ext_resource path="res://Environment/fence/Fence.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Hunter/Hunter.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Tree/Tree.tscn" type="PackedScene" id=14]
@@ -137,5 +137,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -5 )
 [node name="Tree5" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 9 )
 
+[node name="DayCycle" type="Timer" parent="."]
+
 [connection signal="finished" from="Music/Dusk" to="." method="_on_Dusk_finished"]
 [connection signal="finished" from="Music/Dawn" to="." method="_on_Dawn_finished"]
+[connection signal="timeout" from="DayCycle" to="." method="_on_DayCycle_timeout"]

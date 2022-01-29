@@ -54,7 +54,7 @@ func _process(delta):
 	if Global.day and not in_shadow:
 		sun_health -= drain_rate * delta
 	else:
-		sun_health += drain_rate * delta
+		sun_health += drain_rate * delta * 2
 	sun_health = clamp(sun_health, 0, 100)
 	
 	if sun_health == 0:
@@ -87,6 +87,7 @@ func day_action():
 			score_saved += 1
 			Global.population -= 1
 			update_score()
+			check_win()
 	else:
 		if carryingBody:
 			drop_body()
@@ -100,6 +101,7 @@ func night_action():
 			score_killed += 1
 			Global.population -= 1
 			update_score()
+			check_win()
 
 func damage():
 	health -= 25
@@ -153,6 +155,12 @@ func drop_body():
 	new_villager.translation.y = 0
 	Global.villagers.append(new_villager)
 	get_parent().add_child(new_villager)
+
+func set_hands(day):
+	$CanvasLayer/HandsHuman.visible = day
+	$CanvasLayer/HandsWolf.visible = !day
+	$CanvasLayer/SunHealth.visible = day
+	$CanvasLayer/Health.visible = !day
 
 # movement controls
 func get_movement_input():
