@@ -15,11 +15,14 @@ var villager = preload("res://Villager/villager.tscn")
 var score_saved = 0
 var score_killed = 0
 
+var sun_health = 100
+var drain_rate = 2
+
+var health = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	update_score()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,6 +31,18 @@ func _process(delta):
 	
 	$RayCast.rotation = $Camera.rotation
 	detect_action()
+	
+	# sun health draining
+	var in_shadow = false
+	if Global.day and not in_shadow:
+		sun_health -= drain_rate * delta
+	else:
+		sun_health += drain_rate * delta
+	sun_health = clamp(sun_health, 0, 100)
+	
+	# UI
+	$CanvasLayer/SunHealth.value = sun_health
+	$CanvasLayer/Health.value = health
 	
 	# action detection
 	if Input.is_action_just_pressed("action"):
@@ -58,6 +73,7 @@ func day_action():
 			$CanvasLayer/CarryVillager.visible = false
 			carryingBody = false
 			score_saved += 1
+			Global.population -= 1
 			update_score()
 	else:
 		if carryingBody:
@@ -69,7 +85,11 @@ func night_action():
 		if coll.is_in_group("villager"):
 			coll.kill()
 			score_killed += 1
+			Global.population -= 1
 			update_score()
+
+func damage():
+	health -= 25
 
 func kill():
 	pass
@@ -130,4 +150,4 @@ func _unhandled_input(event):
 		$Camera.rotation.x = clamp($Camera.rotation.x, -1.2, 1.2)
 
 func update_score():
-	$CanvasLayer/Score.text = "Saved: %s\nKilled: %s" % [score_saved, score_killed]
+	$CanvasLayer/Score.text = "Saved: %s\nKilled: %s\nVillagers left: %s" % [score_saved, score_killed, Global.population]

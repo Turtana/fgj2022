@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/playerscript.gd" type="Script" id=1]
 [ext_resource path="res://Villager/villager_concept.png" type="Texture" id=2]
@@ -6,6 +6,11 @@
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0.984314, 0.0117647, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -44,10 +49,10 @@ __meta__ = {
 }
 
 [node name="Score" type="Label" parent="CanvasLayer"]
-margin_left = 39.0
-margin_top = 48.0
-margin_right = 254.0
-margin_bottom = 138.0
+margin_left = 43.0
+margin_top = 45.0
+margin_right = 258.0
+margin_bottom = 186.0
 custom_fonts/font = ExtResource( 3 )
 text = "Saved:
 Killed:"
@@ -62,6 +67,55 @@ margin_right = 809.0
 margin_bottom = 504.0
 custom_fonts/font = ExtResource( 3 )
 text = "Action"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SunHealth" type="ProgressBar" parent="CanvasLayer"]
+modulate = Color( 0.992157, 0.952941, 0.00392157, 1 )
+margin_left = 894.0
+margin_top = 85.0
+margin_right = 1424.0
+margin_bottom = 129.0
+custom_styles/fg = SubResource( 2 )
+value = 40.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SunHealthText" type="Label" parent="CanvasLayer/SunHealth"]
+margin_left = 156.0
+margin_top = -40.0
+margin_right = 380.0
+margin_bottom = -5.0
+custom_fonts/font = ExtResource( 3 )
+text = "Sun resistance"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="ProgressBar" parent="CanvasLayer"]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 894.0
+margin_top = 85.0
+margin_right = 1424.0
+margin_bottom = 129.0
+custom_styles/fg = SubResource( 3 )
+value = 40.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthText" type="Label" parent="CanvasLayer/Health"]
+margin_left = 228.0
+margin_top = -40.0
+margin_right = 380.0
+margin_bottom = -5.0
+custom_fonts/font = ExtResource( 3 )
+text = "Health"
 __meta__ = {
 "_edit_use_anchors_": false
 }

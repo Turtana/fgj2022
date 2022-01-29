@@ -16,6 +16,8 @@ func _ready():
 	for c in get_children():
 		if c.is_in_group("villager"):
 			Global.villagers.append(c)
+	Global.population = Global.villagers.size()
+	$Player.update_score()
 	sun_offset = $Sun.translation - $Player.translation
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,6 +44,8 @@ func swap_day_night():
 		$Music/NightMusic.stop()
 		$Music/Dawn.play()
 		$Light.light_energy = 2
+		$Player/CanvasLayer/SunHealth.visible = true
+		$Player/CanvasLayer/Health.visible = false
 	else:
 		$WorldEnvironment.environment = night_env
 		$Sun.texture = moon
@@ -49,6 +53,8 @@ func swap_day_night():
 		$Music/DayMusic.stop()
 		$Music/Dusk.play()
 		$Light.light_energy = 1
+		$Player/CanvasLayer/SunHealth.visible = false
+		$Player/CanvasLayer/Health.visible = true
 	
 	var villagers = Global.villagers
 	for villager in villagers:
@@ -60,10 +66,14 @@ func swap_day_night():
 
 
 func _on_Dusk_finished():
+	if Global.day:
+		return
 	$Music/NightMusic.play()
 	$Music/NightMusic.stream_paused = false
 
 
 func _on_Dawn_finished():
+	if not Global.day:
+		return
 	$Music/DayMusic.play()
 	$Music/DayMusic.stream_paused = false

@@ -32,7 +32,7 @@ func use_sprite(day):
 func kill():
 	var b = blood.instance()
 	b.translation = translation
-	b.translation.y += 1
+	b.translation.y += 2
 	b.emitting = true
 	get_parent().add_child(b)
 	queue_free()
