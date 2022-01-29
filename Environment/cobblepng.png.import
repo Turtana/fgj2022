@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cobblepng.png-f9f0511c58319be4d91e36fdc8e66a46.stex"
+path="res://.import/cobblepng.png-74ec840750c98205bd42b9955139191c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cobblepng.png"
-dest_files=[ "res://.import/cobblepng.png-f9f0511c58319be4d91e36fdc8e66a46.stex" ]
+source_file="res://Environment/cobblepng.png"
+dest_files=[ "res://.import/cobblepng.png-74ec840750c98205bd42b9955139191c.stex" ]
 
 [params]
 

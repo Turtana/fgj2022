@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/maaPng.png-e333563d14e6eecc7e0c98b6e01b33e3.s3tc.stex"
-path.etc2="res://.import/maaPng.png-e333563d14e6eecc7e0c98b6e01b33e3.etc2.stex"
+path.s3tc="res://.import/door.png-f1a45e8430cd20d643330c70dc6191d1.s3tc.stex"
+path.etc2="res://.import/door.png-f1a45e8430cd20d643330c70dc6191d1.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://maaPng.png"
-dest_files=[ "res://.import/maaPng.png-e333563d14e6eecc7e0c98b6e01b33e3.s3tc.stex", "res://.import/maaPng.png-e333563d14e6eecc7e0c98b6e01b33e3.etc2.stex" ]
+source_file="res://RescueDoor/door.png"
+dest_files=[ "res://.import/door.png-f1a45e8430cd20d643330c70dc6191d1.s3tc.stex", "res://.import/door.png-f1a45e8430cd20d643330c70dc6191d1.etc2.stex" ]
 
 [params]
 

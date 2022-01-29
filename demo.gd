@@ -6,8 +6,9 @@ extends Spatial
 # var b = "text"
 var day_env = load("res://env_day.tres")
 var night_env = load("res://env_night.tres")
-var sun = load("res://sun.png")
-var moon = load("res://moon.png")
+var sun = load("res://Environment/sun.png")
+var moon = load("res://Environment/moon.png")
+var sun_offset
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,11 +16,13 @@ func _ready():
 	for c in get_children():
 		if c.is_in_group("villager"):
 			Global.villagers.append(c)
+	sun_offset = $Sun.translation - $Player.translation
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("day_night"):
 		swap_day_night()
+	$Sun.translation = $Player.translation + sun_offset
 
 func swap_day_night():
 	Global.day = not Global.day
