@@ -6,7 +6,7 @@ extends KinematicBody
 # var b = "text"
 var mouse_sensitivity = .001
 var camera_anglev = 0
-var move_speed = 5
+var move_speed = 7
 var pause = false
 
 var carryingBody = false
@@ -70,6 +70,9 @@ func night_action():
 			coll.kill()
 			score_killed += 1
 			update_score()
+
+func kill():
+	pass
 
 func detect_action():
 	var coll = $RayCast.get_collider()
