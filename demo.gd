@@ -22,7 +22,7 @@ func _ready():
 	
 	randomize()
 	var cycletime = randi() % 61 + 60
-	$DayCycle.start(cycletime)
+	$DayCycle.start(cycletime / 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -84,4 +84,4 @@ func _on_Dawn_finished():
 func _on_DayCycle_timeout():
 	swap_day_night()
 	var cycletime = randi() % 61 + 60
-	$DayCycle.start(cycletime)
+	$DayCycle.start(cycletime / 2)
