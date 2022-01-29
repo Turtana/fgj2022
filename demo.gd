@@ -9,11 +9,14 @@ var day_env = load("res://env_day.tres")
 var night_env = load("res://env_night.tres")
 var sun = load("res://sun.png")
 var moon = load("res://moon.png")
+var villagers = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$WorldEnvironment.environment = day_env
-
+	for c in get_children():
+		if c.is_in_group("villager"):
+			villagers.append(c)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,3 +31,5 @@ func swap_day_night():
 	else:
 		$WorldEnvironment.environment = night_env
 		$Sun.texture = moon
+	for villager in villagers:
+		villager.use_sprite(day)
