@@ -24,6 +24,7 @@ var health = 100
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$CanvasLayer/NewGameButton.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,10 +34,12 @@ func _process(delta):
 			Global.pause = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			get_parent().stop_music(false)
+			$CanvasLayer/NewGameButton.visible = false
 		else:
 			Global.pause = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			get_parent().stop_music(true)
+			$CanvasLayer/NewGameButton.visible = true
 	
 	if Global.pause:
 		return
@@ -79,6 +82,7 @@ func day_action():
 			carryingBody = true
 		if coll.is_in_group("rescue") and carryingBody:
 			$CanvasLayer/CarryVillager.visible = false
+			$Saved.play()
 			carryingBody = false
 			score_saved += 1
 			Global.population -= 1
@@ -107,6 +111,19 @@ func kill():
 	Global.game_over = true
 	get_parent().stop_music(true)
 	$CanvasLayer/ActionText.text = "GAME OVER"
+	$CanvasLayer/NewGameButton.visible = true
+
+func check_win():
+	if Global.population == 0:
+		Global.pause = true
+		Global.game_over = true
+		get_parent().stop_music(true)
+		$CanvasLayer/ActionText.text = "YOU WIN!"
+		$CanvasLayer/NewGameButton.visible = true
+
+func new_game():
+	Global.reset()
+	get_tree().change_scene("res://demo.tscn")
 
 func detect_action():
 	var coll = $RayCast.get_collider()
@@ -165,3 +182,7 @@ func _unhandled_input(event):
 
 func update_score():
 	$CanvasLayer/Score.text = "Saved: %s\nKilled: %s\nVillagers left: %s" % [score_saved, score_killed, Global.population]
+
+
+func _on_NewGameButton_button_up():
+	new_game()

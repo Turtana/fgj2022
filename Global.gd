@@ -13,7 +13,12 @@ var game_over = false
 func _ready():
 	pass # Replace with function body.
 
-
+func reset():
+	day = true
+	villagers = []
+	population = 0
+	pause = false
+	game_over = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

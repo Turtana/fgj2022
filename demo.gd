@@ -40,43 +40,40 @@ func stop_music(stop):
 			$Music/NightMusic.stream_paused = false
 
 func swap_day_night():
-	Global.day = not Global.day
 	if (Global.day):
-		$WorldEnvironment.environment = day_env
-		$Sun.texture = sun
-		$Music/NightMusic.stop()
-		$Music/Dawn.play()
-		$Light.light_energy = 2
-		$Player/CanvasLayer/SunHealth.visible = true
-		$Player/CanvasLayer/Health.visible = false
-	else:
-		$WorldEnvironment.environment = night_env
-		$Sun.texture = moon
-		$Player.drop_body()
 		$Music/DayMusic.stop()
 		$Music/Dusk.play()
-		$Light.light_energy = 1
-		$Player/CanvasLayer/SunHealth.visible = false
-		$Player/CanvasLayer/Health.visible = true
-	
+	else:
+		$Music/NightMusic.stop()
+		$Music/Dawn.play()
+
+func swap_villager_sprites():
 	var villagers = Global.villagers
 	for villager in villagers:
 		var wr = weakref(villager)
 		if wr.get_ref(): # villager might be freed...
 			villager.use_sprite(Global.day)
-#		else:
-#			villagers.erase(villager)
 
 
 func _on_Dusk_finished():
-	if Global.day:
-		return
+	Global.day = not Global.day
+	$WorldEnvironment.environment = night_env
+	$Sun.texture = moon
+	$Player.drop_body()
 	$Music/NightMusic.play()
 	$Music/NightMusic.stream_paused = false
-
+	$Light.light_energy = 1
+	$Player/CanvasLayer/SunHealth.visible = false
+	$Player/CanvasLayer/Health.visible = true
+	swap_villager_sprites()
 
 func _on_Dawn_finished():
-	if not Global.day:
-		return
+	Global.day = not Global.day
+	$WorldEnvironment.environment = day_env
+	$Sun.texture = sun
 	$Music/DayMusic.play()
 	$Music/DayMusic.stream_paused = false
+	$Light.light_energy = 2
+	$Player/CanvasLayer/SunHealth.visible = true
+	$Player/CanvasLayer/Health.visible = false
+	swap_villager_sprites()

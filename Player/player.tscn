@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/playerscript.gd" type="Script" id=1]
 [ext_resource path="res://Villager/villagerPNG.png" type="Texture" id=2]
 [ext_resource path="res://Environment/font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Sounds/WherewolfWolfHit02.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/WherewolfVillagerSaveJingle02.wav" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -71,6 +72,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="NewGameButton" type="Button" parent="CanvasLayer"]
+margin_left = 676.0
+margin_top = 532.0
+margin_right = 857.0
+margin_bottom = 601.0
+custom_fonts/font = ExtResource( 3 )
+text = "New Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SunHealth" type="ProgressBar" parent="CanvasLayer"]
 modulate = Color( 0.992157, 0.952941, 0.00392157, 1 )
 margin_left = 894.0
@@ -124,3 +136,9 @@ __meta__ = {
 stream = ExtResource( 4 )
 volume_db = -10.0
 pitch_scale = 1.2
+
+[node name="Saved" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -15.0
+
+[connection signal="button_up" from="CanvasLayer/NewGameButton" to="." method="_on_NewGameButton_button_up"]
