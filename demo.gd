@@ -26,29 +26,29 @@ func _process(delta):
 
 func stop_music(stop):
 	if stop:
-		$NightMusic.stream_paused = true
-		$DayMusic.stream_paused = true
+		$Music/NightMusic.stream_paused = true
+		$Music/DayMusic.stream_paused = true
 	else:
 		if Global.day:
-			$DayMusic.stream_paused = false
+			$Music/DayMusic.stream_paused = false
 		else:
-			$NightMusic.stream_paused = false
+			$Music/NightMusic.stream_paused = false
 
 func swap_day_night():
 	Global.day = not Global.day
 	if (Global.day):
 		$WorldEnvironment.environment = day_env
 		$Sun.texture = sun
-		$NightMusic.stop()
-		$DayMusic.play()
-		$DayMusic.stream_paused = false
+		$Music/NightMusic.stop()
+		$Music/Dawn.play()
+		$Light.light_energy = 2
 	else:
 		$WorldEnvironment.environment = night_env
 		$Sun.texture = moon
 		$Player.drop_body()
-		$NightMusic.play()
-		$NightMusic.stream_paused = false
-		$DayMusic.stop()
+		$Music/DayMusic.stop()
+		$Music/Dusk.play()
+		$Light.light_energy = 1
 	
 	var villagers = Global.villagers
 	for villager in villagers:
@@ -57,3 +57,13 @@ func swap_day_night():
 			villager.use_sprite(Global.day)
 #		else:
 #			villagers.erase(villager)
+
+
+func _on_Dusk_finished():
+	$Music/NightMusic.play()
+	$Music/NightMusic.stream_paused = false
+
+
+func _on_Dawn_finished():
+	$Music/DayMusic.play()
+	$Music/DayMusic.stream_paused = false
