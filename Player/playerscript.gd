@@ -41,9 +41,11 @@ func _process(delta):
 		if pause:
 			pause = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			get_parent().stop_music(false)
 		else:
 			pause = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			get_parent().stop_music(true)
 
 func day_action():
 	var coll = $RayCast.get_collider()

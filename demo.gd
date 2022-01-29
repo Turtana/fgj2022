@@ -24,15 +24,32 @@ func _process(delta):
 		swap_day_night()
 	$Sun.translation = $Player.translation + sun_offset
 
+func stop_music(stop):
+	if stop:
+		$NightMusic.stream_paused = true
+		$DayMusic.stream_paused = true
+	else:
+		if Global.day:
+			$DayMusic.stream_paused = false
+		else:
+			$NightMusic.stream_paused = false
+
 func swap_day_night():
 	Global.day = not Global.day
 	if (Global.day):
 		$WorldEnvironment.environment = day_env
 		$Sun.texture = sun
+		$NightMusic.stop()
+		$DayMusic.play()
+		$DayMusic.stream_paused = false
 	else:
 		$WorldEnvironment.environment = night_env
 		$Sun.texture = moon
 		$Player.drop_body()
+		$NightMusic.play()
+		$NightMusic.stream_paused = false
+		$DayMusic.stop()
+	
 	var villagers = Global.villagers
 	for villager in villagers:
 		var wr = weakref(villager)
