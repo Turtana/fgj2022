@@ -4,8 +4,8 @@ extends KinematicBody
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var day_sprite = preload("res://Villager/villager_concept.png")
-var night_sprite = preload("res://Villager/villager_night.png")
+var day_sprite = preload("res://Villager/villagerPNG.png")
+var night_sprite = preload("res://Villager/villagerYo.png")
 var blood = preload("res://Villager/Blood.tscn")
 
 var speed = 5
@@ -16,7 +16,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.day:
+	if Global.day or Global.pause:
 		return
 	
 	var dir = translation - get_parent().get_node("Player").translation
@@ -36,3 +36,11 @@ func kill():
 	b.emitting = true
 	get_parent().add_child(b)
 	queue_free()
+
+
+func _on_GreetArea_body_entered(body):
+	if body.is_in_group("player"):
+		if Global.day:
+			$Hello.play()
+		else:
+			$Help.play()

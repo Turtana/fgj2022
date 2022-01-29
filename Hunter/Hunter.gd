@@ -14,7 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.day or not active:
+	if Global.day or not active or Global.pause:
 		return
 	else:
 		var dir = get_parent().get_node("Player").translation - translation

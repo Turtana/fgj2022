@@ -6,6 +6,8 @@ extends Node
 var day = true
 var villagers = []
 var population = 0
+var pause = false
+var game_over = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -22,6 +22,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Global.pause:
+		return
+	
 	if Input.is_action_just_pressed("day_night"):
 		swap_day_night()
 	$Sun.translation = $Player.translation + sun_offset

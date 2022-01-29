@@ -16,7 +16,7 @@ var score_saved = 0
 var score_killed = 0
 
 var sun_health = 100
-var drain_rate = 2
+var drain_rate = 3
 
 var health = 100
 
@@ -26,6 +26,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# pause mode
+	if Input.is_action_just_pressed("ui_cancel"):
+		if Global.pause and not Global.game_over:
+			Global.pause = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			get_parent().stop_music(false)
+		else:
+			Global.pause = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			get_parent().stop_music(true)
+	
+	if Global.pause:
+		return
+	
 	var input = get_movement_input()
 	move_and_slide(input * move_speed)
 	
@@ -40,6 +54,9 @@ func _process(delta):
 		sun_health += drain_rate * delta
 	sun_health = clamp(sun_health, 0, 100)
 	
+	if sun_health == 0:
+		kill()
+	
 	# UI
 	$CanvasLayer/SunHealth.value = sun_health
 	$CanvasLayer/Health.value = health
@@ -51,16 +68,7 @@ func _process(delta):
 		else:
 			night_action()
 	
-	# pause mode
-	if Input.is_action_just_pressed("ui_cancel"):
-		if pause:
-			pause = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			get_parent().stop_music(false)
-		else:
-			pause = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			get_parent().stop_music(true)
+	
 
 func day_action():
 	var coll = $RayCast.get_collider()
@@ -84,15 +92,21 @@ func night_action():
 	if coll:
 		if coll.is_in_group("villager"):
 			coll.kill()
+			$Hit.play()
 			score_killed += 1
 			Global.population -= 1
 			update_score()
 
 func damage():
 	health -= 25
+	if health <= 0:
+		kill()
 
 func kill():
-	pass
+	Global.pause = true
+	Global.game_over = true
+	get_parent().stop_music(true)
+	$CanvasLayer/ActionText.text = "GAME OVER"
 
 func detect_action():
 	var coll = $RayCast.get_collider()
