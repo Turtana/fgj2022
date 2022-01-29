@@ -14,10 +14,15 @@ config/name="FGJ2022"
 run/main_scene="res://demo.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/width=1500
 window/size/height=1000
+window/stretch/mode="viewport"
 
 [input]
 
