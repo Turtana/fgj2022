@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/playerscript.gd" type="Script" id=1]
 [ext_resource path="res://Villager/villagerPNG.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Sounds/WherewolfVillagerSaveJingle02.wav" type="AudioStream" id=5]
 [ext_resource path="res://Player/ihmisPOVpng.png" type="Texture" id=6]
 [ext_resource path="res://Player/susiPOVpng.png" type="Texture" id=7]
+[ext_resource path="res://Music/WherewolfGameOverJingle.wav" type="AudioStream" id=8]
+[ext_resource path="res://Music/WherewolfWinJingle.wav" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -167,5 +169,13 @@ pitch_scale = 1.2
 [node name="Saved" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -15.0
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+
+[node name="YouWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
 
 [connection signal="button_up" from="CanvasLayer/NewGameButton" to="." method="_on_NewGameButton_button_up"]

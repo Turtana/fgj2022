@@ -114,6 +114,7 @@ func kill():
 	get_parent().stop_music(true)
 	$CanvasLayer/ActionText.text = "GAME OVER"
 	$CanvasLayer/NewGameButton.visible = true
+	$GameOver.play()
 
 func check_win():
 	if Global.population == 0:
@@ -122,6 +123,7 @@ func check_win():
 		get_parent().stop_music(true)
 		$CanvasLayer/ActionText.text = "YOU WIN!"
 		$CanvasLayer/NewGameButton.visible = true
+		$YouWin.play()
 
 func new_game():
 	Global.reset()
