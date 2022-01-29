@@ -15,8 +15,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Global.day or not active or Global.pause:
+		$AnimationPlayer.stop()
 		return
 	else:
+		$AnimationPlayer.play("Jumping")
+		
 		var dir = get_parent().get_node("Player").translation - translation
 		move_and_slide(dir.normalized() * speed)
 		

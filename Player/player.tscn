@@ -34,6 +34,7 @@ collide_with_areas = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CarryVillager" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1176.0

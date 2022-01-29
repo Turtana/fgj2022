@@ -16,7 +16,8 @@ var score_saved = 0
 var score_killed = 0
 
 var sun_health = 100
-var drain_rate = 3
+var drain_rate = 10
+var in_shadow = false
 
 var health = 100
 
@@ -47,7 +48,6 @@ func _process(delta):
 	detect_action()
 	
 	# sun health draining
-	var in_shadow = false
 	if Global.day and not in_shadow:
 		sun_health -= drain_rate * delta
 	else:
