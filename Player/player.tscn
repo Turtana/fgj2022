@@ -108,6 +108,9 @@ margin_bottom = 93.0
 mouse_filter = 2
 texture = ExtResource( 10 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SunHealth" type="ProgressBar" parent="CanvasLayer"]
 modulate = Color( 0.992157, 0.952941, 0.00392157, 1 )
