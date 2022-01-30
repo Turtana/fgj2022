@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Environment/maaPng.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Environment/Bush.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Environment/Rock1.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Environment/Rock2.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Music/WherewolfAmbientAir.wav" type="AudioStream" id=19]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 10, 1, 10 )
@@ -160,6 +161,11 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 9, 0.6, 1 )
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 18, 0.4, -6 )
 
 [node name="DayCycle" type="Timer" parent="."]
+
+[node name="AmbientAir" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+volume_db = -29.0
+autoplay = true
 
 [connection signal="finished" from="Music/Dusk" to="." method="_on_Dusk_finished"]
 [connection signal="finished" from="Music/Dawn" to="." method="_on_Dawn_finished"]

@@ -21,10 +21,13 @@ var in_shadow = false
 
 var health = 100
 
+var grunt_sounds = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$CanvasLayer/NewGameButton.visible = false
+	_proload_grunts()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -104,6 +107,8 @@ func night_action():
 			Global.population -= 1
 			update_score()
 			check_win()
+			yield(get_tree().create_timer(0.1), "timeout")
+			random_grunts()
 
 func damage():
 	health -= 25
@@ -198,3 +203,16 @@ func update_score():
 
 func _on_NewGameButton_button_up():
 	new_game()
+
+func _proload_grunts():
+	randomize()
+	grunt_sounds.append(preload("res://Sounds/WolfGrunts/WherewolfWolfGrowl01.wav"))
+	grunt_sounds.append(preload("res://Sounds/WolfGrunts/WherewolfWolfGrowl02.wav"))
+	grunt_sounds.append(preload("res://Sounds/WolfGrunts/WherewolfWolfGrowl03.wav"))
+	grunt_sounds.append(preload("res://Sounds/WolfGrunts/WherewolfWolfGrowl04.wav"))
+	grunt_sounds.append(preload("res://Sounds/WolfGrunts/WherewolfWolfGrowl08.wav"))
+
+func random_grunts():
+	grunt_sounds.shuffle()
+	$WolfGrunt.stream=grunt_sounds.front()
+	$WolfGrunt.play()
