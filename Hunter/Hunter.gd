@@ -32,3 +32,8 @@ func _process(delta):
 
 func _on_GracePeriod_timeout():
 	active = true
+
+func _on_BreathArea_body_entered(body):
+	if not Global.day:
+		if body.is_in_group("player"):
+			$Breath.play()

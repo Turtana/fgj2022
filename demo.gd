@@ -31,7 +31,8 @@ func _process(delta):
 		return
 	
 	if Input.is_action_just_pressed("day_night"):
-		swap_day_night()
+		pass
+#		swap_day_night()
 	$Sun.translation = $Player.translation + sun_offset
 
 func stop_music(stop):
