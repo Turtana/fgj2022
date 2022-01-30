@@ -9,6 +9,7 @@ var night_env = load("res://env_night.tres")
 var sun = load("res://Environment/sun.png")
 var moon = load("res://Environment/moon.png")
 var sun_offset
+var time_left_day = 999
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -58,6 +59,8 @@ func swap_villager_sprites():
 		if wr.get_ref(): # villager might be freed...
 			villager.use_sprite(Global.day)
 
+func pause_timer(pause):
+	$DayCycle.paused = pause
 
 func _on_Dusk_finished():
 	Global.day = not Global.day

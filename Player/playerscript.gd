@@ -32,11 +32,13 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Global.pause and not Global.game_over:
 			Global.pause = false
+			get_parent().pause_timer(false)
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			get_parent().stop_music(false)
 			$CanvasLayer/NewGameButton.visible = false
 		else:
 			Global.pause = true
+			get_parent().pause_timer(true)
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			get_parent().stop_music(true)
 			$CanvasLayer/NewGameButton.visible = true
