@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/playerscript.gd" type="Script" id=1]
 [ext_resource path="res://Villager/villagerPNG.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Player/susiPOVpng.png" type="Texture" id=7]
 [ext_resource path="res://Music/WherewolfGameOverJingle.wav" type="AudioStream" id=8]
 [ext_resource path="res://Music/WherewolfWinJingle.wav" type="AudioStream" id=9]
+[ext_resource path="res://titlePNG.png" type="Texture" id=10]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -83,10 +84,30 @@ margin_top = 532.0
 margin_right = 857.0
 margin_bottom = 601.0
 custom_fonts/font = ExtResource( 3 )
-text = "New Game"
+text = "Reset Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ActionText2" type="Label" parent="CanvasLayer/NewGameButton"]
+margin_left = -45.0
+margin_top = -63.0
+margin_right = 227.0
+margin_bottom = -28.0
+custom_fonts/font = ExtResource( 3 )
+text = "Press 'P' to play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NewGameButton"]
+margin_left = -280.0
+margin_top = -375.0
+margin_right = 421.0
+margin_bottom = 93.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+expand = true
 
 [node name="SunHealth" type="ProgressBar" parent="CanvasLayer"]
 modulate = Color( 0.992157, 0.952941, 0.00392157, 1 )
@@ -146,6 +167,7 @@ mouse_filter = 2
 texture = ExtResource( 6 )
 expand = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -159,6 +181,7 @@ mouse_filter = 2
 texture = ExtResource( 7 )
 expand = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

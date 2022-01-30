@@ -24,7 +24,7 @@ func _ready():
 	randomize()
 	var cycletime = randi() % 61 + 60
 	$DayCycle.start(cycletime / 2)
-
+	$Player.pause()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Global.pause:

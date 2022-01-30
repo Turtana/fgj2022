@@ -29,6 +29,13 @@ func _ready():
 	$CanvasLayer/NewGameButton.visible = false
 	_proload_grunts()
 
+func pause():
+	Global.pause = true
+	get_parent().pause_timer(true)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_parent().stop_music(true)
+	$CanvasLayer/NewGameButton.visible = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# pause mode
@@ -40,11 +47,7 @@ func _process(delta):
 			get_parent().stop_music(false)
 			$CanvasLayer/NewGameButton.visible = false
 		else:
-			Global.pause = true
-			get_parent().pause_timer(true)
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			get_parent().stop_music(true)
-			$CanvasLayer/NewGameButton.visible = true
+			pause()
 	
 	if Global.pause:
 		return
