@@ -179,4 +179,6 @@ volume_db = -10.0
 stream = ExtResource( 9 )
 volume_db = -10.0
 
+[node name="WolfGrunt" type="AudioStreamPlayer" parent="."]
+
 [connection signal="button_up" from="CanvasLayer/NewGameButton" to="." method="_on_NewGameButton_button_up"]

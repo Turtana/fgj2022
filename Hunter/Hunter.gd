@@ -25,6 +25,7 @@ func _process(delta):
 		
 		if dir.length() < 1:
 			$SwordHit.play()
+			$HunterHitGrunt.play()
 			get_parent().get_node("Player").damage()
 			active = false
 			$GracePeriod.start()

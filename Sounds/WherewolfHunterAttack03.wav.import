@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WherewolfHunterAttack03.wav-0c354453f0aa07e26de21bb6868af2ab.sample"
+
+[deps]
+
+source_file="res://Sounds/WherewolfHunterAttack03.wav"
+dest_files=[ "res://.import/WherewolfHunterAttack03.wav-0c354453f0aa07e26de21bb6868af2ab.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
