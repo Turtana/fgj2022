@@ -4,7 +4,7 @@ extends KinematicBody
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed = 5
+var speed = 6.5
 var active = true
 
 # Called when the node enters the scene tree for the first time.
