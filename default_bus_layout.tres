@@ -1,0 +1,63 @@
+[gd_resource type="AudioBusLayout" load_steps=6 format=2]
+
+[sub_resource type="AudioEffectCompressor" id=4]
+resource_name = "Compressor"
+threshold = -9.3
+ratio = 1.7
+release_ms = 187.0
+
+[sub_resource type="AudioEffectLimiter" id=5]
+resource_name = "Limiter"
+ceiling_db = -1.1
+soft_clip_db = 0.7
+soft_clip_ratio = 3.5
+
+[sub_resource type="AudioEffectCompressor" id=1]
+resource_name = "Compressor"
+threshold = -9.8
+ratio = 2.1
+release_ms = 124.0
+sidechain = "SFX Bus"
+
+[sub_resource type="AudioEffectCompressor" id=2]
+resource_name = "Compressor"
+threshold = -10.3
+release_ms = 140.0
+sidechain = "Music Bus"
+
+[sub_resource type="AudioEffectCompressor" id=3]
+resource_name = "Compressor"
+threshold = -10.8
+release_ms = 139.0
+sidechain = "SFX Bus"
+
+[resource]
+bus/0/volume_db = 0.464998
+bus/0/effect/0/effect = SubResource( 4 )
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource( 5 )
+bus/0/effect/1/enabled = true
+bus/1/name = "Music Bus"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0672607
+bus/1/send = "Master"
+bus/1/effect/0/effect = SubResource( 1 )
+bus/1/effect/0/enabled = true
+bus/2/name = "SFX Bus"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = "Master"
+bus/3/name = "Ambient Bus"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -0.130497
+bus/3/send = "Master"
+bus/3/effect/0/effect = SubResource( 2 )
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource( 3 )
+bus/3/effect/1/enabled = true
