@@ -97,18 +97,22 @@ shadow_bias = 0.0
 stream = ExtResource( 9 )
 volume_db = -10.0
 autoplay = true
+bus = "Music Bus"
 
 [node name="NightMusic" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 8 )
 volume_db = -10.0
+bus = "Music Bus"
 
 [node name="Dusk" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 10 )
 volume_db = -10.0
+bus = "Music Bus"
 
 [node name="Dawn" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 11 )
 volume_db = -10.0
+bus = "Music Bus"
 
 [node name="Fence" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 0 )
@@ -167,6 +171,7 @@ transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 18, 0.4, -6 )
 stream = ExtResource( 19 )
 volume_db = -29.0
 autoplay = true
+bus = "Ambient Bus"
 
 [node name="Bush2" parent="." instance=ExtResource( 20 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -8, 0.439071, -3 )
