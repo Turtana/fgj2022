@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WherewolfDayGreeting07.wav-b170ea4317dd7d1bb118310f82aa3810.sample"
+
+[deps]
+
+source_file="res://Sounds/Greetings/WherewolfDayGreeting07.wav"
+dest_files=[ "res://.import/WherewolfDayGreeting07.wav-b170ea4317dd7d1bb118310f82aa3810.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

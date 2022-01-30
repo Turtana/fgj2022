@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WherewolfWolfGrowl08.wav-bb621a51b78ddfced1b54de66f5c6795.sample"
+
+[deps]
+
+source_file="res://Sounds/WolfGrunts/WherewolfWolfGrowl08.wav"
+dest_files=[ "res://.import/WherewolfWolfGrowl08.wav-bb621a51b78ddfced1b54de66f5c6795.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
