@@ -1,6 +1,5 @@
 extends KinematicBody
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -126,6 +125,7 @@ func kill():
 	$CanvasLayer/NewGameButton.visible = true
 	$GameOver.play()
 	$CanvasLayer/NewGameButton/ActionText2.visible = false
+	$CanvasLayer/TimerDisplayer.stop_timer()
 
 func check_win():
 	if Global.population == 0:
@@ -136,6 +136,7 @@ func check_win():
 		$CanvasLayer/NewGameButton.visible = true
 		$YouWin.play()
 		$CanvasLayer/NewGameButton/ActionText2.visible = false
+		$CanvasLayer/TimerDisplayer.stop_timer()
 
 func new_game():
 	Global.reset()

@@ -20,6 +20,7 @@ func _ready():
 	Global.population = Global.villagers.size()
 	$Player.update_score()
 	sun_offset = $Sun.translation - $Player.translation
+	$Player/CanvasLayer/TimerDisplayer._ready()
 	
 	randomize()
 	var cycletime = randi() % 61 + 60
@@ -32,7 +33,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("day_night"):
 		pass
-#		swap_day_night()
+		swap_day_night()
 	$Sun.translation = $Player.translation + sun_offset
 
 func stop_music(stop):
@@ -62,6 +63,10 @@ func swap_villager_sprites():
 
 func pause_timer(pause):
 	$DayCycle.paused = pause
+	if pause:
+		$Player/CanvasLayer/TimerDisplayer.stop_timer()
+	else:
+		$Player/CanvasLayer/TimerDisplayer.start_timer()
 
 func _on_Dusk_finished():
 	Global.day = not Global.day

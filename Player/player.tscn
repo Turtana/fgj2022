@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/playerscript.gd" type="Script" id=1]
 [ext_resource path="res://Villager/villagerPNG.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Music/WherewolfGameOverJingle.wav" type="AudioStream" id=8]
 [ext_resource path="res://Music/WherewolfWinJingle.wav" type="AudioStream" id=9]
 [ext_resource path="res://titlePNG.png" type="Texture" id=10]
+[ext_resource path="res://Player/TimerDisplayer.gd" type="Script" id=11]
+[ext_resource path="res://Environment/Inconsolata-Regular.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -18,6 +20,12 @@ radius = 0.5
 bg_color = Color( 1, 0.984314, 0.0117647, 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 34
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 12 )
 
 [node name="Player" type="KinematicBody" groups=["player"]]
 script = ExtResource( 1 )
@@ -188,6 +196,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TimerDisplayer" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 679.0
+margin_top = 27.0
+margin_right = 869.0
+margin_bottom = 164.0
+custom_fonts/normal_font = SubResource( 4 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ms" type="Timer" parent="CanvasLayer/TimerDisplayer"]
+wait_time = 0.1
+
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -10.0
@@ -213,3 +235,4 @@ bus = "SFX Bus"
 bus = "SFX Bus"
 
 [connection signal="button_up" from="CanvasLayer/NewGameButton" to="." method="_on_NewGameButton_button_up"]
+[connection signal="timeout" from="CanvasLayer/TimerDisplayer/ms" to="CanvasLayer/TimerDisplayer" method="_on_ms_timeout"]

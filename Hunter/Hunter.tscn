@@ -74,6 +74,7 @@ anims/RESET = SubResource( 3 )
 
 [node name="HunterHitGrunt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+pitch_scale = 0.84
 bus = "SFX Bus"
 
 [node name="BreathArea" type="Area" parent="."]
@@ -85,6 +86,9 @@ shape = SubResource( 4 )
 [node name="Breath" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10446, 0 )
 stream = ExtResource( 5 )
+unit_db = 3.404
+pitch_scale = 0.82
+bus = "SFX Bus"
 
 [connection signal="timeout" from="GracePeriod" to="." method="_on_GracePeriod_timeout"]
 [connection signal="body_entered" from="BreathArea" to="." method="_on_BreathArea_body_entered"]

@@ -19,6 +19,7 @@ func reset():
 	population = 0
 	pause = false
 	game_over = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
