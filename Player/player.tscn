@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/playerscript.gd" type="Script" id=1]
 [ext_resource path="res://Villager/villagerPNG.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://titlePNG.png" type="Texture" id=10]
 [ext_resource path="res://Player/TimerDisplayer.gd" type="Script" id=11]
 [ext_resource path="res://Environment/Inconsolata-Regular.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Player/WolfArms1.glb" type="PackedScene" id=13]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -170,6 +171,7 @@ __meta__ = {
 }
 
 [node name="HandsHuman" type="TextureRect" parent="CanvasLayer"]
+visible = false
 margin_left = -7.0
 margin_top = 157.0
 margin_right = 1513.0
@@ -233,6 +235,14 @@ bus = "SFX Bus"
 
 [node name="WolfGrunt" type="AudioStreamPlayer" parent="."]
 bus = "SFX Bus"
+
+[node name="WolfArms1" parent="." instance=ExtResource( 13 )]
+transform = Transform( 0.00235983, -0.00139298, 0.0699463, -0.0191279, 0.0673066, 0.00198575, -0.0672945, -0.0191802, 0.00188839, 0.4413, 1.25153, -0.489194 )
+
+[node name="CarryVillagerNew" type="Sprite3D" parent="WolfArms1"]
+transform = Transform( -5.9208, -3.19855, 7.39685, -5.63539, 8.20457, -0.963016, -5.76077, -4.7386, -6.66028, 7.96027, 0.344208, -9.32039 )
+visible = false
+texture = ExtResource( 2 )
 
 [connection signal="button_up" from="CanvasLayer/NewGameButton" to="." method="_on_NewGameButton_button_up"]
 [connection signal="timeout" from="CanvasLayer/TimerDisplayer/ms" to="CanvasLayer/TimerDisplayer" method="_on_ms_timeout"]

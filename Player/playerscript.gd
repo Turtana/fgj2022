@@ -85,10 +85,10 @@ func day_action():
 	if coll:
 		if coll.is_in_group("villager") and not carryingBody:
 			coll.queue_free()
-			$CanvasLayer/CarryVillager.visible = true
+			$WolfArms1/CarryVillagerNew.visible = true
 			carryingBody = true
 		if coll.is_in_group("rescue") and carryingBody:
-			$CanvasLayer/CarryVillager.visible = false
+			$WolfArms1/CarryVillagerNew.visible = false
 			$Saved.play()
 			carryingBody = false
 			score_saved += 1
@@ -172,8 +172,8 @@ func drop_body():
 	get_parent().add_child(new_villager)
 
 func set_hands(day):
-	$CanvasLayer/HandsHuman.visible = day
-	$CanvasLayer/HandsWolf.visible = !day
+#	$CanvasLayer/HandsHuman.visible = day
+#	$CanvasLayer/HandsWolf.visible = !day
 	$CanvasLayer/SunHealth.visible = day
 	$CanvasLayer/Health.visible = !day
 
