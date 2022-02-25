@@ -8,22 +8,40 @@ var day_sprite = preload("res://Villager/villagerPNG.png")
 var night_sprite = preload("res://Villager/villagerYo.png")
 var blood = preload("res://Villager/Blood.tscn")
 
+var state = 0
+var rng = RandomNumberGenerator.new()
+var radius = 1
+var random_position = Vector3(rng.randf_range(-radius, radius),0,rng.randf_range(-radius, radius))
+
 var speed = 5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_proload_greetings()
 	_proload_help()
+	rng.randomize()
+	$Timer.set_autostart(true)
+	
 var greeting_sounds = []
 var help_sounds = []
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.day or Global.pause:
+	if Global.pause:
+		return
+	if Global.day:
+		if state == 0:
+			return
+		if state == 1:
+			random_movement()
 		return
 	
 	var dir = translation - get_parent().get_node("Player").translation
 	if dir.length_squared() < 20:
 		move_and_slide(dir.normalized() * speed)
+
+func random_movement():
+#	move_and_slide(motion * speed)
+	return
 
 func use_sprite(day):
 	if day:
@@ -73,3 +91,10 @@ func random_help():
 	help_sounds.shuffle()
 	$Help.stream=help_sounds.front()
 	$Help.play()
+
+
+func _on_Timer_timeout():
+	rng.randomize()
+	state = floor(rand_range(0,2))
+	print(state)
+	pass # Replace with function body.

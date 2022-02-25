@@ -1,0 +1,18 @@
+[remap]
+
+importer="hterrain_packed_texture_importer"
+type="StreamTexture"
+path.s3tc="res://.import/kartta_slot1_normal_roughness.packed_tex-bec9a5d30edfb417d5d52ba4ffe07502.s3tc.stex"
+path.etc2="res://.import/kartta_slot1_normal_roughness.packed_tex-bec9a5d30edfb417d5d52ba4ffe07502.etc2.stex"
+
+[deps]
+
+source_file="res://Environment/kartta_maa_textures/kartta_slot1_normal_roughness.packed_tex"
+dest_files=[ "res://.import/kartta_slot1_normal_roughness.packed_tex-bec9a5d30edfb417d5d52ba4ffe07502.s3tc.stex", "res://.import/kartta_slot1_normal_roughness.packed_tex-bec9a5d30edfb417d5d52ba4ffe07502.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+flags/repeat=1
+flags/filter=true
+flags/mipmaps=true

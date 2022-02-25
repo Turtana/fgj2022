@@ -163,7 +163,7 @@ func drop_body():
 	if not carryingBody:
 		return
 	
-	$CanvasLayer/CarryVillager.visible = false
+	$WolfArms1/CarryVillagerNew.visible = false
 	carryingBody = false
 	var new_villager = villager.instance()
 	new_villager.translation = translation - $Camera.global_transform.basis.z * 1.2
