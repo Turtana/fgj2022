@@ -54,6 +54,15 @@ func _process(delta):
 	var input = get_movement_input()
 	move_and_slide(input * move_speed)
 	
+	var gravity = Vector3(0,-0.1,0)
+	if input == Vector3(0,0,0):
+		move_and_collide(gravity)
+	else:
+		move_and_collide(gravity*1/translation.length()*100)
+		
+		#if dir.length_squared() < 20:
+
+	
 	$RayCast.rotation = $Camera.rotation
 	detect_action()
 	
@@ -167,9 +176,10 @@ func drop_body():
 	carryingBody = false
 	var new_villager = villager.instance()
 	new_villager.translation = translation - $Camera.global_transform.basis.z * 1.2
-	new_villager.translation.y = 0
+	#new_villager.translation.y = 0
 	Global.villagers.append(new_villager)
 	get_parent().add_child(new_villager)
+	
 
 func set_hands(day):
 #	$CanvasLayer/HandsHuman.visible = day
