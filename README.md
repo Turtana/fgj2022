@@ -1,4 +1,4 @@
-#  
+#  Wherewolf
 
 There is a man helping the villagers of a town, but there is also a werewolf terrorizing it! And YOU as the player are both of them! During daytime, you collect/help villagers get inside so they dont get killed by the werewolf, and during the night you are the werewolf going after the poor villagers.
 
